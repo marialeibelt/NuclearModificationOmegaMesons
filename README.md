@@ -6,7 +6,7 @@ Analysis framework for ω → π⁺π⁻π⁰ signal extraction and the measurem
 
 This project was developed during my time as a **CERN Summer Student 2025**.
 
-It contains the full analysis chain for ω → π⁺π⁻π⁰ reconstruction and the measurement of the nuclear modification factor (R<sub>OO</sub>) in ALICE, including signal extraction, efficiency correction, and plotting.
+It contains the analysis chain for ω → π⁺π⁻π⁰ reconstruction and the measurement of the nuclear modification factor (R<sub>OO</sub>) in ALICE, including signal extraction, correction, and plotting.
 
 ### Overview of files
 
