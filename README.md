@@ -1,6 +1,6 @@
 # Measuring the Nuclear Modification of Omega Meson Production in pp and OO Collisions with ALICE
 ## Description
-Analysis framework for ω → π⁺π⁻π⁰ signal extraction and the measurement of nuclear modification (R<sub>AA</sub>) in ALICE, including all related plotting and comparison scripts.
+Analysis framework for ω → π⁺π⁻π⁰ signal extraction and the measurement of nuclear modification (R<sub>OO</sub>) in ALICE, including all related plotting and comparison scripts.
 
 ## About this project
 This project was developed during my time as a CERN Summer Student 2025.
