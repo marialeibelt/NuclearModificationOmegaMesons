@@ -3,12 +3,26 @@
 Analysis framework for ω → π⁺π⁻π⁰ signal extraction and the measurement of nuclear modification (R<sub>OO</sub>) in ALICE, including all related plotting and comparison scripts.
 
 ## About this project
-This project was developed during my time as a CERN Summer Student 2025.
+
+This project was developed during my time as a **CERN Summer Student 2025**.
+
+It contains the full analysis chain for ω → π⁺π⁻π⁰ reconstruction and the measurement of the nuclear modification factor (R<sub>OO</sub>) in ALICE, including signal extraction, efficiency correction, and plotting.
+
+### Overview of files
+
+- **`omegarec.cpp`** – Extracts and processes histograms from raw data ROOT files. Performs background fitting and subtraction, then fits the ω signal in different p<sub>T</sub> bins.  
+- **`plot_omega_compareflex.cpp`** – Corresponding plotting script. Compares signals extracted from different files and writes the resulting figures to a ROOT file.  
+- **`omegagen.cpp`** – Extracts ω signals from generic Monte Carlo (MC) samples.  
+- **`plot_omegagen.cpp`** – Plotting script for generic MC. Writes the corresponding histograms to a ROOT file.  
+- **`omegaeff.cpp`** – Calculates the MC efficiency in chosen p<sub>T</sub> bins.  
+- **`omegacorr.cpp`** – Produces the fully corrected ω spectra.  
+- **`plot_omegacorr.cpp`** – Plotting script for corrected spectra, writing the figures to a ROOT file.  
+- **`ROO.cpp`** – Calculates and writes the R<sub>OO</sub> values into a ROOT file.
 
 ## LICENCE
 MIT License
 
-Copyright (c) 2022 Maria Leibelt
+Copyright (c) 2025 Maria Leibelt
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
