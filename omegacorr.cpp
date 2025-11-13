@@ -60,7 +60,7 @@ double sig_TVX_pp = 0.0503; //b
 double sig_TVX_OO = 1.13;   //b
 
 
-// Get corrected omega spectra
+// Function to fully correct omega spectra
 void omegacorr(const TString& datarec_file, 
                const TString& eff_file, 
                const TString& output_name,
