@@ -12,6 +12,7 @@
 #include "/alf/data/mleibelt/LogPlotLib/Plotting.h"
 
 
+//Function to correct reconstructed data with MC efficiencies
 void omegaeff(const TString& datarec_file, 
                const TString& eff_file, 
                const TString& output_name){
