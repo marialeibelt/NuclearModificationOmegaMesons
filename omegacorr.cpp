@@ -12,7 +12,7 @@
 #include "/alf/data/mleibelt/LogPlotLib/Plotting.h"
 
 
-
+// Function to get invariant cross sections
 void Inv_Crosssec(TH1* hist, TFile* outputfile, TH1* eff_hist, int Nevt, double deltay, double sig_TVX, double eff_TVX){
     int nbins = hist->GetNbinsX();
 
@@ -60,7 +60,7 @@ double sig_TVX_pp = 0.0503; //b
 double sig_TVX_OO = 1.13;   //b
 
 
-
+// Get corrected omega spectra
 void omegacorr(const TString& datarec_file, 
                const TString& eff_file, 
                const TString& output_name,
@@ -83,7 +83,7 @@ void omegacorr(const TString& datarec_file,
 
     TFile* output = new TFile(output_name, "RECREATE");
 
-    // get histograms
+    // get histograms (reconstructed data + MC efficiencies)
     TH1* hdatarec = dynamic_cast<TH1*>(input->Get("h_omegacounts"));
     TH1* heff = dynamic_cast<TH1*>(input_eff->Get("hEfficiency"));
     if(!hdatarec || !heff){
