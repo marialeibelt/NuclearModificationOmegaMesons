@@ -14,11 +14,10 @@
 #include "/alf/data/mleibelt/LogPlotLib/Plotting.h"
 
 
-
-
 double pT_bins[13] = {1.8, 2.2, 2.6, 3.2, 4.0, 5.0, 6.0, 7.0, 8.0, 10.0, 12.0, 16.0, 20.0};
 std::vector<double> ptCenters;
 std::vector<double> rooValues;
+
 
 void ROO(const TString& datarec_OO_file, 
         const TString& datarec_pp_file,
@@ -32,7 +31,6 @@ void ROO(const TString& datarec_OO_file,
     std::ofstream logfile("logfiles/logfile_ROO.txt");
     std::streambuf* originalCoutBuffer = std::cout.rdbuf();
     std::cout.rdbuf(logfile.rdbuf());
-
     std::cout << "Opening input files..." << std::endl;
 
     //input parameter
@@ -91,14 +89,16 @@ void ROO(const TString& datarec_OO_file,
         std::cout<<"binIndex_OO: "<<binIndex_OO<<", binIndex_pp: "<<binIndex_pp<<std::endl;
         std::cout<<"binIndex_effOO: "<<binIndex_effOO<<", binIndex_effPP: "<<binIndex_effPP<<std::endl;
         
-
+        // Calculate yields
         double yield_OO = nomega_OO/Nevt_OO * 1/(eff_OO*2*M_PI*deltay) * 1/(ptCenter*deltapT) * eff_TVX_OO;
         double yield_pp = nomega_pp/Nevt_pp * 1/(eff_pp*2*M_PI*deltay) * 1/(ptCenter*deltapT) * eff_TVX_pp; 
-        
+
+        // Calculate cross sections
         double crosssection_OO = nomega_OO/Nevt_OO * 1/(eff_OO*2*M_PI*deltay) * 1/(ptCenter*deltapT) * sig_TVX_OO;
         double crosssection_pp = nomega_pp/Nevt_pp * 1/(eff_pp*2*M_PI*deltay) * 1/(ptCenter*deltapT) * sig_TVX_pp;
         int nuclear_thickness_OO = 188;    //b^-1
 
+        // Calculate ROO
         double ROO = yield_OO / (nuclear_thickness_OO*crosssection_pp);
         std::cout<<"ptCenter: "<<ptCenter<<", deltapT: "<<deltapT<<std::endl;
         std::cout<<"nomega_OO: "<<nomega_OO<<", eff_OO: "<<eff_OO<<", yield_OO: "<<yield_OO<<", crosssection_OO: "<<crosssection_OO<<std::endl;
@@ -199,7 +199,7 @@ void ROO(const TString& datarec_OO_file,
 
     Plot_ROO.New(gNorm_pPb, "", -1, linethickness-2, kGreen-8, "E3");
 
-    // Mary
+    // Values for this work
     double xMin_OO_Mary = 0.9;
     double xMax_OO_Mary = 1.1;
 
