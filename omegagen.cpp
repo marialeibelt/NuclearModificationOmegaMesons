@@ -9,7 +9,7 @@
 #include <TString.h>
 
 
-
+// Function to fit background
 Double_t FunctionBGExclusionPol3(Double_t *x, Double_t *par){   
   double Momega_EMCal = 0.7822;
   double sigmaomega_EMCal = 0.014;                         
@@ -63,7 +63,7 @@ std::vector<double> index_list;
 
 double hline_y2[12]={0.5*1e3,0.8*1e3,1.5*1e3,1.8*1e3,1.8*1e3,1.*1e3,0.6*1e3,0.5*1e3,0.5*1e3,0.3*1e3,0.2*1e3,50};
 
-//Name lists
+//Root Folder structure in detail
 TString dir_names_ppMC[8] = {"track-propagation","lumi-task","event-selection-task","bc-selection-task",
   "mc-generator-studies","emcal-correction-task","skimmer-gamma-calo","omega-meson-emc"};
 
@@ -117,13 +117,14 @@ TString output_names[4] = {"outputs/omegagen/ppMC_gen_hists.root",
 int output_length = sizeof(output_names) / sizeof(output_names[0]);
 
 
+
+//Function to get generated MC from ROOT files
 void omegagen(){
   std::ofstream logfile("logfiles/logfile_gen.txt");
   std::streambuf* originalCoutBuffer = std::cout.rdbuf();
   std::cout.rdbuf(logfile.rdbuf());
 
   for(int j=3;j<output_length;++j){
-    std::cout<<"output_names: "<<output_names[j]<<std::endl;
     TFile *input = TFile::Open(file[j],"read");
     TFile* output = new TFile(output_names[j], "RECREATE");
     
@@ -138,35 +139,27 @@ void omegagen(){
     }
 
     else if(j==1){
-      std::cout<<"huhu: j="<<j<<", bin in loop"<<std::endl;
       TDirectory* dir_OM_ppmc_fixed_gen = (TDirectory*)input->Get(dir_names_ppMC_fixed[2]);
       //MC gen !Min Bias!
       obj = dir_OM_ppmc_fixed_gen->Get(OM_ppmc_fixed_gen_hists[9]);
       if(!obj){std::cout<<"obj not found"<<std::endl;continue;}
       TH1* h1 = dynamic_cast<TH1*>(obj);
       h1->Sumw2();
-      std::cout << "BinContent(5) = " << h1->GetBinContent(5)<< " ± " << h1->GetBinError(5) << std::endl;
-      std::cout << "Sumw2 array size = " << h1->GetSumw2N() << std::endl;
-
       h1->Write();
       continue;
     }
 
     else if(j==2){
-      std::cout<<"huhu: j="<<j<<", bin in loop"<<std::endl;
       TDirectory* dir_OM_OOmc_fixed_gen = (TDirectory*)input->Get(dir_names_OOMC_fixed[4]);
       //MC gen !Min Bias!
       obj = dir_OM_OOmc_fixed_gen->Get(OM_OOmc_fixed_gen_hists[9]);
       if(!obj){std::cout<<"obj not found"<<std::endl;continue;}
       TH1* h1 = dynamic_cast<TH1*>(obj);
       h1->Sumw2();
-      // std::cout << "BinContent(5) = " << h1->GetBinContent(5)<< " ± " << h1->GetBinError(5) << std::endl;
-      // std::cout << "Sumw2 array size = " << h1->GetSumw2N() << std::endl;
       int nbins = h1->GetNbinsX();
       for(int i=1; i<=nbins; ++i){
           double content = h1->GetBinContent(i);
           double error = h1->GetBinError(i);
-          std::cout << "Bin " << i << ": " << content << " ± " << error << std::endl;
       }
 
       h1->Write();
@@ -174,16 +167,12 @@ void omegagen(){
     }
     
     else if(j==3){
-      std::cout<<"huhu: j="<<j<<", bin in loop"<<std::endl;
       TDirectory* dir_OM_ppmc_large_gen = (TDirectory*)input->Get(dir_names_ppMC_large[4]);
       //MC gen !Min Bias!
       obj = dir_OM_ppmc_large_gen->Get(OM_ppmc_large_gen_hists[9]);
       if(!obj){std::cout<<"obj not found"<<std::endl;continue;}
       TH1* h1 = dynamic_cast<TH1*>(obj);
       h1->Sumw2();
-      std::cout << "BinContent(5) = " << h1->GetBinContent(5)<< " ± " << h1->GetBinError(5) << std::endl;
-      std::cout << "Sumw2 array size = " << h1->GetSumw2N() << std::endl;
-
       h1->Write();
       continue;
     }
@@ -191,6 +180,5 @@ void omegagen(){
     input->Close();
     output->Close();
   }
-  std::cout<<"fertiiiig"<<std::endl;
   std::cout.rdbuf(originalCoutBuffer);
 } 
