@@ -89,11 +89,6 @@ void plot_omegacorr(const TString& datacorr_OO_file,
     FillCorrPlot(hDataCorr_OO, Plot1d, xMin_OO, xMax_OO, "OO", kPink+10,linethickness);
     FillCorrPlot(hDataCorr_pp, Plot1d, xMin_pp, xMax_pp, "pp", kGreen+2,linethickness);
 
-    std::cout<<"pp: BinContent(5): "<<hDataCorr_pp->GetBinContent(5)<<", pp: BinCenter(5): "<<hDataCorr_pp->GetBinCenter(5)<<std::endl;
-    std::cout<<"pp: BinContent(6): "<<hDataCorr_pp->GetBinContent(6)<<", pp: BinCenter(6): "<<hDataCorr_pp->GetBinCenter(6)<<std::endl;
-    std::cout<<"pp: BinContent(6): "<<hDataCorr_pp->GetBinContent(7)<<", pp: BinCenter(6): "<<hDataCorr_pp->GetBinCenter(7)<<std::endl;
-    std::cout<<"pp: BinContent(6): "<<hDataCorr_pp->GetBinContent(8)<<", pp: BinCenter(6): "<<hDataCorr_pp->GetBinCenter(8)<<std::endl;
-
     Plot1d.SetAxisLabel("#bf{#it{p}_{T} (GeV/#it{c})}", "#bf{#it{E}#frac{d^{3} #sigma}{d#it{p}^{3}} (nbGeV^{-2}#it{c}^{3})}");
     Plot1d.SetMargins(0.12, 0.15, 0.05, 0.025);
     Plot1d.SetLegend(0.6, 0.85, 0.38, 0.5);
