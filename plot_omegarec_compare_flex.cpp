@@ -255,7 +255,7 @@ void AddSignalOnly_1D(TH1D* h, Plotting1D& plotindividual, const char* labelIn, 
 
 
 
-
+// Function to show results from different files in one figure
 void plot_omegarec_compare_flex(
     const std::vector<TString>& file_vec,
     const std::vector<int>& datasetnumbers,
