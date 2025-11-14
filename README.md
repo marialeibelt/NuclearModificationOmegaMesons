@@ -12,8 +12,8 @@ It contains the analysis for ω → π⁺π⁻π⁰ reconstruction and the measu
 
 - **`omegarec.cpp`** – Extracts and processes histograms from raw data ROOT files. Performs background fitting and subtraction, then fits the ω signal in different p<sub>T</sub> bins.  
 - **`plot_omega_compareflex.cpp`** – Corresponding plotting script. Compares signals extracted from different files and writes the resulting figures to a ROOT file.  
-- **`omegagen.cpp`** – Extracts ω signals from generic Monte Carlo (MC) samples.  
-- **`plot_omegagen.cpp`** – Plotting script for generic MC. Writes the corresponding histograms to a ROOT file.  
+- **`omegagen.cpp`** – Extracts ω signals from generated minimum bias Monte Carlo (MC).  
+- **`plot_omegagen.cpp`** – Plotting script for generated MC. Writes the corresponding histograms to a ROOT file.  
 - **`omegaeff.cpp`** – Calculates the MC efficiency in chosen p<sub>T</sub> bins.  
 - **`omegacorr.cpp`** – Produces the fully corrected ω spectra.  
 - **`plot_omegacorr.cpp`** – Plotting script for corrected spectra, writing the figures to a ROOT file.  
